@@ -33,7 +33,14 @@ enum layers {
 // The LEDs are so bright on the Corne, so we set the intensity pretty low.
 #define LED_INTENSITY 0x16
 
+// Define the usual colors using the desired LED_INTENSITY defined above.
+#define RGB_DARK_BLUE 0x00, 0x00, LED_INTENSITY
+#define RGB_DARK_CYAN 0x00, LED_INTENSITY, LED_INTENSITY
 #define RGB_DARK_GREEN 0x00, LED_INTENSITY, 0x00
+#define RGB_DARK_MAGENTA LED_INTENSITY, 0x00, LED_INTENSITY
+#define RGB_DARK_RED LED_INTENSITY, 0x00, 0x00
+#define RGB_DARK_WHITE LED_INTENSITY, LED_INTENSITY, LED_INTENSITY
+#define RGB_DARK_YELLOW LED_INTENSITY, LED_INTENSITY, 0x00
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x6_3(
@@ -109,6 +116,24 @@ void set_color_split(uint8_t key_code, uint8_t r, uint8_t g, uint8_t b) {
     rgb_matrix_set_color(key_code, r, g, b);
 }
 
+// Sets all keycodes specified in the array to the given color. This is good for
+// coloring arbitrary keys like WASD or all of the number keys at once.
+void set_all_keys_colors(const uint8_t keycodes[], uint8_t len, uint8_t r, uint8_t g, uint8_t b) {
+    for (uint8_t i = 0; i < len; ++i) {
+        set_color_split(keycodes[i], r, g, b);
+    }
+}
+
+void light_up_left_mods(uint8_t r, uint8_t g, uint8_t b) {
+    const uint8_t left_mod_keycodes[] = {22, 19, 16, 11};
+    set_all_keys_colors(left_mod_keycodes, sizeof(left_mod_keycodes) / sizeof(uint8_t), r, g, b);
+}
+
+void light_up_right_mods(uint8_t r, uint8_t g, uint8_t b) {
+    const uint8_t right_mod_keycodes[] = {38, 43, 46, 49};
+    set_all_keys_colors(right_mod_keycodes, sizeof(right_mod_keycodes) / sizeof(uint8_t), r, g, b);
+}
+
 #ifdef RGB_MATRIX_ENABLE
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     switch(get_highest_layer(layer_state)) {
@@ -117,8 +142,8 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         case _SYMB:
             break;
         case _NUM:
-            set_color_split(18, RGB_DARK_GREEN);
-            set_color_split(6, RGB_DARK_GREEN);
+            const uint8_t numpad_keycodes[] = {57, 52, 47, 42, 58, 53, 48, 43, 59, 54, 49, 44};
+            set_all_keys_colors(numpad_keycodes, sizeof(numpad_keycodes) / sizeof(uint8_t), RGB_DARK_WHITE);
             break;
         default:
             break;
