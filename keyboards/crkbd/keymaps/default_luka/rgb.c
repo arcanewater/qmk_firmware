@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "keycodes.h"
 
+static const char base_layer_extra_keys[] = {6, 33, 24, 25, 26, 51, 52, 53};
 static const char gaming_leds[] = {18, 22, 19, 16};
 static const char gaming2_leds[] = {23, 18, 17, 10, 9, 22, 19, 16, 11, 8};
 static const char nav_leds[] = {38, 43, 44, 46};
@@ -13,6 +14,11 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         rgb_matrix_set_color(26, RGB_RED);
     }
     switch(get_highest_layer(layer_state|default_layer_state)) {
+        case _BASE:
+            for (uint8_t i = 0; i < 8; i++) {
+                rgb_matrix_set_color(base_layer_extra_keys[i], RGB_SPRINGGREEN);
+            }
+            break;
         case _GAMING:
             if (is_keyboard_master()) {
                 for (uint8_t i = 0; i < 4; i++) {

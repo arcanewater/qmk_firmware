@@ -31,3 +31,18 @@ enum crkbd_layers {
 #define SC_F2 LSFT(LCTL(KC_F2))
 #define SC_F3 LSFT(LCTL(KC_F3))
 #define SC_F4 LSFT(LCTL(KC_F4))
+
+#define SC_TILD RALT(KC_1)  // ~
+#define SC_LCBR RALT(KC_B)  // {
+#define SC_RCBR RALT(KC_N)  // }
+#define SC_LPRN LSFT(KC_8)  // (
+#define SC_RPRN LSFT(KC_9)  // )
+#define SC_PIPE RALT(KC_W)  // |
+#define SC_AT RALT(KC_V)    // @
+#define SC_EXLM LSFT(KC_1)  // !
+#define SC_HASH LSFT(KC_3)  // #
+#define SC_DLR LSFT(KC_4)   // $
+#define SC_PERC LSFT(KC_5)  // %
+#define SC_VOLU RGUI(KC_F12) // Volume UP
+#define SC_VOLD RGUI(KC_F11) // Volume DOWN
+#define SC_MUTE RGUI(KC_F11) // Volume MUTE

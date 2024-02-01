@@ -103,9 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                      |        |        |        |  |        |        |        |
 //                                      `--------------------------'  `--------------------------'
   [_LOWER] = LAYOUT_split_3x6_3(
-      KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
-      _______,   SC_F1,   SC_F2,   SC_F3,   SC_F4, XXXXXXX,                      XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
-      _______,  GAMING, XXXXXXX, KC_VOLD, KC_VOLU, KC_MUTE,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+      SC_TILD, SC_EXLM,   SC_AT, SC_HASH,  SC_DLR, SC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, SC_LPRN, SC_RPRN,  KC_DEL,
+      _______,   SC_F1,   SC_F2,   SC_F3,   SC_F4, XXXXXXX,                      XXXXXXX, KC_UNDS, KC_PLUS, SC_LCBR, SC_RCBR, SC_PIPE,
+      _______,  GAMING, XXXXXXX, SC_VOLD, SC_VOLU, SC_MUTE,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                                           _______, _______, _______,   _______,  _______, _______
 
   ),
